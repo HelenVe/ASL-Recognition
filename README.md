@@ -92,6 +92,10 @@ Run
 ```
 python3 test.py 
 ```
-
+**DEMO**
+There is also a live demo with the end-to-end VGG model to recognise the letters. Run
+```
+python3 live_demo.py
+```
 
 
