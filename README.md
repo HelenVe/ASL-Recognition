@@ -15,7 +15,8 @@ The labels have 2 formats:
 
 **How to run**:
 1. Inside your main project folder create a "data and a "hog" folder. Inside these two create 4 folders for the users: "andy", "drucie", "rita", "robin".
-2. The get_data.py script extracts the Images from the corresponding Matlab files so run
+2. Inside your main project folder create a csv folder to save all the csv files.
+3. The get_data.py script extracts the Images from the corresponding Matlab files so run
   ```
   python3 get_data.py -u [andy, drucie, rita, robin]
   ```
@@ -39,7 +40,7 @@ python3 get_hog.py -u [andy, drucie, rita, robin].
   python3 optical_flow.py -i data/rita -s optical_flow/rita
   ```
   This code calculates the optical flow of the images using OpenCV's Gunnar Farneback Dense optical flow inside "rita" and saves them.
-  
+
  **Feature Extraction**
  
  For the feature extraction part we use Pytorch Resnet18 Pretrained on Imagenet.
@@ -62,11 +63,13 @@ python3 get_hog.py -u [andy, drucie, rita, robin].
  ```
  python3 frame_level_train.py -u [andy, drucie, rita, robin]
  ```
+ and input "1". To test it input "2" when prompted. Some images and their predicted values wlll be displayed.
  You can always change the layers. The data is loaded from the data_generator according to the batch size.
  The fsvid.csv loads the labels as well. 
  Inside the main project folder create a "models" folder. Create subfolders. In lines 129, 133, 145 change the path name accordingly in order ot save the models.
  
  **Sequential Model**
+ **Training**
  
  To train the Resnet based sequential model run 
  ```
@@ -81,3 +84,14 @@ To train the HoG based sequential model run
 This model takes the 128-dim HoG feature vectors of each frame and trains a model.
 Keep in mind that if you changed any of the folder names above, you should check the code because these values have been hardcoded.
 Will fix in the future.
+
+**Testing**
+To test the sequential models, change the code to load the model you want from the "models" folder. The metric used is the Word Error Rate.
+We use Beam Search Decoding with beam width = 5 to decode.
+Run 
+```
+python3 test.py 
+```
+
+
+
