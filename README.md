@@ -69,6 +69,7 @@ python3 get_hog.py -u [andy, drucie, rita, robin].
  Inside the main project folder create a "models" folder. Create subfolders. In lines 129, 133, 145 change the path name accordingly in order ot save the models.
  
  **Sequential Model**
+ 
  **Training**
  
  To train the Resnet based sequential model run 
@@ -86,6 +87,7 @@ Keep in mind that if you changed any of the folder names above, you should check
 Will fix in the future.
 
 **Testing**
+
 To test the sequential models, change the code to load the model you want from the "models" folder. The metric used is the Word Error Rate.
 We use Beam Search Decoding with beam width = 5 to decode.
 Run 
@@ -93,6 +95,7 @@ Run
 python3 test.py 
 ```
 **DEMO**
+
 There is also a live demo with the end-to-end VGG model to recognise the letters. Run
 ```
 python3 live_demo.py
