@@ -53,7 +53,10 @@ python3 get_hog.py -u [andy, drucie, rita, robin].
  ```
   python3 get_features.py -i optical_flow/rita -s optical_flow_features
  ```
- **Static Model **
+ Before training remember to split the data for each user into train, dev, test so the code can work, else you must make some changes.
+ You can also create a folder for all the users, add their images and split into train, dev, test.
+ 
+ **Static Model**
  
  To train the static model run 
  ```
@@ -61,5 +64,20 @@ python3 get_hog.py -u [andy, drucie, rita, robin].
  ```
  You can always change the layers. The data is loaded from the data_generator according to the batch size.
  The fsvid.csv loads the labels as well. 
- Inside the main project folder create a "models" folder. In lines 129, 133, 145 change the path name accordingly in order ot save the models.
+ Inside the main project folder create a "models" folder. Create subfolders. In lines 129, 133, 145 change the path name accordingly in order ot save the models.
  
+ **Sequential Model**
+ 
+ To train the Resnet based sequential model run 
+ ```
+ python3 train_resnet.py -u [andy, drucie, rita, robin]
+ ```
+This model takes the 512-dim feature vectors of each frame output by Resnet and trains a model.
+
+To train the HoG based sequential model run 
+ ```
+ python3 train_hog.py -u [andy, drucie, rita, robin]
+```
+This model takes the 128-dim HoG feature vectors of each frame and trains a model.
+Keep in mind that if you changed any of the folder names above, you should check the code because these values have been hardcoded.
+Will fix in the future.
